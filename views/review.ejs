@@ -1,0 +1,32 @@
+<% layout('layout/Layout.ejs')%>
+<h1 class="Text">Reviews</h1>
+<% for (review of Allreviews) { %>
+    <div class="review-container">
+        <p class="review-text"><%= review.review %></p>
+        <p class="review-author"><strong>Reviewed by <%= review.author.username %></strong></p>
+    </div>
+<% } %>
+
+<style>
+    .Text{
+        text-align: center;
+    }
+    .review-container {
+        max-width: 600px;
+        margin: 10px auto;
+        background: #fff;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+    .review-text {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .review-author {
+        font-size: 14px;
+        color: #555;
+    }
+</style>

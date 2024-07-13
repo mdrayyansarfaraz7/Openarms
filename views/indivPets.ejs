@@ -1,0 +1,33 @@
+<% layout('layout/Layout') %>
+<div class="pet-details-container">
+    <div class="pet-image">
+        <img src="<%= petDetails.image.url %>" alt="<%= petDetails.name %>">
+    </div>
+    <div class="pet-details">
+        <h2><%= petDetails.name %></h2>
+        <p><strong>Species:</strong> <%= petDetails.species %></p>
+        <p><strong>Breed:</strong> <%= petDetails.breed %></p>
+        <p><strong>Age:</strong> <%= petDetails.age %></p>
+        <p><strong>Description:</strong> <%= petDetails.description %></p>
+        <p><strong>Status:</strong> <%= petDetails.status %></p>
+        <% if (petDetails.listingType === 'Adopt') { %>
+            <h3 class="adoptionTag"> For Adoption</h3>
+        <% } else { %>
+            <p><strong>Price: </strong> <%= petDetails.price %></p>
+        <% } %>
+        <% if (currentUser) { %>
+            <% if (currentUser._id.toString() === petDetails.Owner._id.toString()) { %>
+                <p><strong>Owned by you</strong></p>
+            <% } else { %>
+                <p><strong>Owner:</strong> <%= petDetails.Owner.username %></p>
+                <form method="POST" action="/requests">
+                    <textarea name="reason" placeholder="Reason for request" required></textarea>
+                    <input type="hidden" name="from" value="<%= currentUser._id %>">
+                    <input type="hidden" name="to" value="<%= petDetails.Owner._id %>">
+                    <input type="hidden" name="pet" value="<%= petDetails._id %>">
+                    <button type="submit">Request to <%= petDetails.listingType === 'Adopt' ? 'Adopt' : 'Buy' %></button>
+                </form>
+            <% } %>
+        <% } %>
+    </div>
+</div>

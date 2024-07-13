@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <link rel="icon" href="/images/paw.png" >
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffffff;
+        }
+        .error-container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #ffa947; 
+        }
+        .error-message {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .error-image {
+            margin-top: 20px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>Error</h1>
+        <p class="error-message"><%= error %></p>
+        <img src="/images/error.png" alt="Upset Cat and Dog" class="error-image">
+    </div>
+</body>
+</html>

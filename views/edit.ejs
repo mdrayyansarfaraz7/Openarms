@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Your Profile</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .editForm {
+             width:600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .editForm h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .editForm label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .editForm input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .editForm button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #FFBD59;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .editForm button[type="submit"]:hover {
+            background-color: #ffa726;
+        }
+    </style>
+</head>
+<body class="auth">
+    <div class="editForm">
+        <h1>Edit Your Profile</h1>
+        <form action="/update/<%= user._id %>/?_method=PUT" method="POST">
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" value="<%= user.email %>">
+
+            <label for="contactInfo">Contact Info:</label>
+            <input type="text" id="contactInfo" name="contactInfo" value="<%= user.ContactInfo %>">
+    
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" value="<%= user.Country %>">
+    
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" value="<%= user.City %>">
+    
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" value="<%= user.Address %>">
+    
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

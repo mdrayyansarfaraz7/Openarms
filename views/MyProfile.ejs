@@ -1,0 +1,96 @@
+<% layout('layout/Layout.ejs') %>
+
+<div class="upper">
+    <div class="user">
+        <i class="fa-solid fa-address-card"></i>
+        <h1><%= user.username %></h1>
+        <p><%= user.email %></p>
+    </div>
+    <div class="userInfo">
+        <p><strong>Contact: </strong><%= user.ContactInfo %></p>
+        <hr>
+        <p><strong>Location: </strong><%= user.City %>, <%= user.Country %></p>
+        <hr>
+        <p><strong>Address: </strong><%= user.Address %></p>
+        <hr>
+        <p><strong>Joined on: </strong><span class="DOJ"><%= user.createdAt.toDateString() %></span></p>
+        <br>
+        <a class="btn" href="/edit/<%= user._id %>">Edit</a>
+    </div>
+</div>
+
+<div class="lower">
+    <div class="YourPets">
+        <h2>Your Pets</h2>
+        <% if (user.Pets.length !== 0) { %>
+            <% user.Pets.forEach(pet => { %>
+                <div class="pet">
+                    <p> <%= pet.name %></p>
+                    <p><span class="listingType"><%= pet.listingType %></span></p>
+                    <form  method="post" action="/pets/<%= user._id %>/<%= pet._id %>?_method=DELETE">
+                        <button class="del-btn"><i class="fa-solid fa-trash-can"></i></button>
+                    </form>
+                </div>
+                <hr>
+            <% }) %>
+        <% } else { %>
+            <p>No pets listed.</p>
+        <% } %>
+    </div>
+    <div class="RequestsForPets">
+        <h2>Requests for Pets</h2>
+        <% if (user.requestsForYou.length !== 0) { %>
+            <% user.requestsForYou.forEach(request => { %>
+                <% if (request.status!='Denied') { %>
+                    <div class="request">
+                    <p><strong>From: </strong><%= request.from.username %></p>
+                    <p><%= request.from.City %>,<%= request.from.Country%></p>
+                    <p><strong>Pet: </strong><%= request.pet.name %></p>
+                    <p><strong>Reason: </strong><%= request.reason %></p>
+                    <p><strong>Status: </strong><%= request.status %></p>
+                    <% if (request.status!='Accepted') { %>
+                        <a class="btn" href="/approve/<%= request._id %>">Approve</a>
+                    <% } %>
+                    
+                    <br>
+                    <br>
+                </div>
+                <hr>
+                <% } %>
+                
+                
+            <% }) %>
+        <% } else { %>
+            <p>No requests for your pets.</p>
+        <% } %>
+    </div>
+
+    <div class="YourRequests">
+        <h2>Your Requests</h2>
+        <% if (user.yourRequests.length !== 0) { %>
+            <% user.yourRequests.forEach(request => { %>
+                
+                    <div class="request">
+                        <p><strong>To: </strong><%= request.to.username %></p>
+                        <p><strong>Pet: </strong><%= request.pet.name %></p>
+                        <p><strong>Reason: </strong><%= request.reason %></p>
+                        <p><strong>Status: </strong><%= request.status %></p>
+                        <% if (request.status === 'Accepted') { %>
+                            <p class="approved-message">Request approved. Contact the owner with the following details:</p>
+                            <p class="approved-details">
+                                <strong>Message: </strong><%= request.message %><br>
+                                <% if (request.ContactInfo) { %>
+                                    <strong>Contact Info: </strong><%= request.ContactInfo %><br>
+                                <% } %>
+                                <strong>Email: </strong><%= request.to.email %>
+                            </p>
+                        <% } %>
+                    </div>
+                    <hr>
+                
+            <% }) %>
+        <% } else { %>
+            <p>No requests made by you.</p>
+        <% } %>
+    </div>
+</div>

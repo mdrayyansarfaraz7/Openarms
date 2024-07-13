@@ -1,0 +1,57 @@
+<nav class="nav1">
+   <div class="main">
+    <div class="logo">
+        <img src="/images/logo1.png" alt="Openarms Logo">
+    </div>
+    <div class="links">
+        <ul>
+            <li> <a href="/"><i class="fa-solid fa-house-chimney"></i>  Home</a></li>
+            <li> <a href="/putUpAPet"><i class="fa-solid fa-paw"></i> Put up a Pet</a></li>
+         
+        </ul>
+    </div>
+   </div>
+   <div class="secondary">
+    <div class="profile">
+        <a href="/MyProfile"><i class="fa-solid fa-user"></i> My Profile</a>
+    </div>
+    <% if (currentUser) { %>
+        <a href="/logout" class="logout">Logout</a>
+    <% }  else{ %>
+    <a href="/login " class="login">Login</a>
+    <a href="/Register" class="register">Register</a>
+    <% } %>
+   </div>
+
+</nav>
+<nav class="nav2">
+    <div class="main2">
+     <div class="logo">
+         <img src="/images/logo1.png" alt="Openarms Logo">
+     </div>
+     <div class="nav2-info">
+        <a href="/" class="elm"><i class="fa-solid fa-house-chimney "></i>  Home</a>
+        <br>
+        <br>
+        <a href="/putUpAPet" class="elm"><i class="fa-solid fa-paw "></i> Put up a Pet</a>
+        <br>
+        <br>
+        <div class="secondary">
+            <div class="profile">
+                <a href="/MyProfile"><i class="fa-solid fa-user"></i> My Profile</a>
+            </div>
+            <% if (currentUser) { %>
+                <a href="/logout" class="logout">Logout</a>
+            <% }  else{ %>
+            <a href="/login " class="login">Login</a>
+            <a href="/Register" class="register">Register</a>
+            <% } %>
+           </div>
+     </div>
+ </nav>
+ 
+ 
+ 
+ 
+
+

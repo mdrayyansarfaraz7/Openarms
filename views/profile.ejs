@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Profile</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="auth">
+    <div class="loginForm">
+        <h1>Set Your Profile</h1>
+        <form action="/profile" method="POST">
+            <label for="contactInfo">Contact Info:</label>
+            <input type="text" name="contactInfo" value="<%= user.contactInfo %>">
+    
+            <label for="country">Country:</label>
+            <input type="text" name="country" value="<%= user.country %>">
+    
+            <label for="city">City:</label>
+            <input type="text" name="city" value="<%= user.city %>">
+    
+            <label for="address">Address:</label>
+            <input type="text" name="address" value="<%= user.address %>">
+    
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+</body>
+</html>

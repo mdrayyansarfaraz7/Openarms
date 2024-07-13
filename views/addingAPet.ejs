@@ -1,0 +1,83 @@
+<% layout('layout/Layout') %>
+    <div class="outerContainer">
+        <form action="/putUpAPet" method="POST" class="PetAdditionForm" enctype="multipart/form-data">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div>
+                <label for="species">Species:</label>
+                <select id="species" name="species" required>
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="rabbit">Rabbit</option>
+                    <option value="hamster">Hamster</option>
+                    <option value="guineapig">Guinea Pig</option>
+                    <option value="bird">Bird</option>
+                    <option value="fish">Fish</option>
+                    <option value="turtle">Turtle</option>
+                    <option value="lizard">Lizard</option>
+                    <option value="Spider">Spider</option>
+    
+                </select>
+            </div>
+            
+            <div>
+                <label for="breed">Breed:</label>
+                <input type="text" id="breed" name="breed" required>
+            </div>
+            
+            <div>
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" step="0.01" required>
+            </div>
+            
+            <div>
+                <label for="image">Image:</label>
+                <input type="file" id="image" name="image" required>
+            </div>
+            
+            <div>
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required></textarea>
+            </div>
+            
+            <div>
+                <label for="listingType">Listing Type:</label>
+                <select id="listingType" name="listingType" required>
+                    <option value="Sale">Sale</option>
+                    <option value="Adopt">Adopt</option>
+                </select>
+            </div>
+            
+            <div id="priceDiv">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" step="0.01">
+            </div>
+            
+            <button type="submit">Create Listing</button>
+        </form>
+    </div>
+    
+
+    <script>
+        const listingTypeSelect = document.getElementById('listingType');
+        const priceDiv = document.getElementById('priceDiv');
+        const priceInput = document.getElementById('price');
+
+        function togglePriceInput() {
+            if (listingTypeSelect.value === 'Adopt') {
+                priceDiv.style.display = 'none';
+                priceInput.value = '';
+            } else {
+                priceDiv.style.display = 'block';
+            }
+        }
+
+        listingTypeSelect.addEventListener('change', togglePriceInput);
+
+        // Initialize on page load
+        togglePriceInput();
+    </script>
+

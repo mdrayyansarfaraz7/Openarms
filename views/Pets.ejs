@@ -1,0 +1,33 @@
+<% layout('layout/Layout') %>
+<div class="filters">
+    <h3>Filter by Pet Type:</h3>
+    <a href="/<%= rout %>/category/dog"><img src="/images/1.png" alt="Filter 1"></a>
+    <a href="/<%= rout %>/category/cat"><img src="/images/2.png" alt="Filter 2"></a>
+    <a href="/<%= rout %>/category/rabbit"><img src="/images/3.png" alt="Filter 3"></a>
+    <a href="/<%= rout %>/category/hamster"><img src="/images/4.png" alt="Filter 4"></a>
+    <a href="/<%= rout %>/category/guineapig"><img src="/images/5.png" alt="Filter 5"></a>
+    <a href="/<%= rout %>/category/bird"><img src="/images/6.png" alt="Filter 6"></a>
+    <a href="/<%= rout %>/category/fish"><img src="/images/7.png" alt="Filter 7"></a>
+    <a href="/<%= rout %>/category/turtle"><img src="/images/8.png" alt="Filter 8"></a>
+    <a href="/<%= rout %>/category/lizard"><img src="/images/9.png" alt="Filter 9"></a>
+    <a href="/<%= rout %>/category/spider"><img src="/images/10.png" alt="Filter 10"></a>
+</div>
+<h1 class="title"><%= title %></h1>
+<div class="pets-container">
+    <% pets.forEach(pet => { %>
+        <div class="pet-card <%= pet.status === 'Adopted' ? 'disabled' : '' %>">
+            <img src="<%= pet.image.url %>" alt="Pet Image">
+            <div class="pet-details">
+                <h5 class="pet-breed">Breed: <%= pet.breed %></h5>
+                <p class="pet-age">Age: <%= pet.age %></p>
+                <% if (pet.status !== 'Adopted') { %>
+                    <a href="/pets/<%= pet._id %>" class="details-button">View Details</a>
+                <% } else { %>
+                    <span class="adopted-label">Adopted</span>
+                <% } %>
+            </div>
+        </div>
+    <% }) %>
+</div>
+
+</body>
