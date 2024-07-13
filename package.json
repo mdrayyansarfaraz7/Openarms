@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "v20.11.0"
+  },
   "name": "openarms",
   "version": "1.0.0",
   "description": "a pet parent website for adoption of pets and finding breeding partners for pets",
