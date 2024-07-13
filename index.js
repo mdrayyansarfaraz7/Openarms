@@ -251,7 +251,7 @@ app.get('/MyProfile',isLoggedIn,async(req,res,next)=>{
             path: 'yourRequests',
             populate: { path: 'from to pet' }
         });
-         res.render('Myprofile', { user });
+         res.render('MyProfile', { user });
     }catch(err){
         next(err);
     }
@@ -327,7 +327,7 @@ app.post('/requests',async(req,res,next)=>{
     
         await User.findByIdAndUpdate(from,{ $push: { yourRequests: savedRequest._id }})
         await User.findByIdAndUpdate(to,{ $push: { requestsForYou: savedRequest._id }})
-        res.redirect('MyProfile');
+        res.redirect('/MyProfile');
 
     }catch (error) {
         next(error)
