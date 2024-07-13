@@ -327,7 +327,7 @@ app.post('/requests',async(req,res,next)=>{
     
         await User.findByIdAndUpdate(from,{ $push: { yourRequests: savedRequest._id }})
         await User.findByIdAndUpdate(to,{ $push: { requestsForYou: savedRequest._id }})
-        res.redirect('/MyProfile');
+        res.redirect('MyProfile');
 
     }catch (error) {
         next(error)
